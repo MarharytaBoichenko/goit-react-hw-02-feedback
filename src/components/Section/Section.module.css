@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.section {
+  margin: auto;
+}
+.title {
+  color: rgb(4, 4, 88);
+}
