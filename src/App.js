@@ -4,6 +4,7 @@ import FeedbackOptions from './components/FeedbackOptions/FeedbackOptions';
 import Statistics from './components/Statistics/Statistics';
 import Section from './components/Section/Section';
 import Notification from './components/Notification/Notification';
+import StatItem from './components/StatItem/StatItem';
 import s from './components/Section/Section.module.css';
 
 class App extends Component {
@@ -41,8 +42,9 @@ class App extends Component {
     return (
       <div className={s.container}>
         <Section title="Please leave feedback">
-          {stateOpt.map(option => (
+          {stateOpt.map((option, index) => (
             <FeedbackOptions
+              key={index + 1}
               options={option}
               onLeaveFeedback={this.onLeaveFeedback}
             />
@@ -57,7 +59,10 @@ class App extends Component {
               total={this.countTotalFeedback()}
               positivePercentage={this.countPositiveFeedbackPercentage()}
             >
-              <p>
+              {stateOpt.map(opt => (
+                <StatItem option={opt} />
+              ))}
+              {/* <p>
                 Good: <span>{good}</span>
               </p>
               <p>
@@ -65,7 +70,7 @@ class App extends Component {
               </p>
               <p>
                 Bad: <span>{bad}</span>
-              </p>
+              </p> */}
               <p>
                 Total: <span>{this.countTotalFeedback()}</span>
               </p>
