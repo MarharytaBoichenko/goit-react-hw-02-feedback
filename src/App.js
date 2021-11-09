@@ -36,6 +36,7 @@ class App extends Component {
   render() {
     const { good, neutral, bad } = this.state;
     const stateOpt = Object.keys(this.state);
+    const stateVal = Object.values(this.state);
     const isFeedback = Object.values(this.state).some(opt => opt > 0);
     console.log(isFeedback);
     console.log(stateOpt);
@@ -58,27 +59,7 @@ class App extends Component {
               bad={bad}
               total={this.countTotalFeedback()}
               positivePercentage={this.countPositiveFeedbackPercentage()}
-            >
-              {stateOpt.map(opt => (
-                <StatItem option={opt} />
-              ))}
-              {/* <p>
-                Good: <span>{good}</span>
-              </p>
-              <p>
-                Neutral: <span>{neutral}</span>
-              </p>
-              <p>
-                Bad: <span>{bad}</span>
-              </p> */}
-              <p>
-                Total: <span>{this.countTotalFeedback()}</span>
-              </p>
-              <p>
-                Positive feedback:
-                <span>{this.countPositiveFeedbackPercentage()}%</span>
-              </p>
-            </Statistics>
+            />
           ) : (
             <Notification message="No feedback given." />
           )}

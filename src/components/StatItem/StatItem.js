@@ -1,17 +1,18 @@
 import s from '../Statistics/Statistics.module.css';
-const StatItem = ({ good }) => {
+import PropTypes from 'prop-types';
+
+const StatItem = ({ label, value }) => {
   return (
     <>
-      <p className={s.ratingText}>
-        Good: <span className={s.ratingFigure}>{good}</span>
-      </p>
-      {/* <p className={s.ratingText}>
-        Neutral: <span className={s.ratingFigure}> {neutral}</span>
-      </p>
-      <p className={s.ratingText}>
-        Bad: <span className={s.ratingFigure}>{bad}</span>
-      </p> */}
+      <li className={s.ratingText}>
+        {label} : {value}
+      </li>
     </>
   );
+};
+
+StatItem.propType = {
+  label: PropTypes.string.isRequired,
+  value: PropTypes.oneOf([PropTypes.number, PropTypes.string]),
 };
 export default StatItem;
